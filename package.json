@@ -1,21 +1,13 @@
 {
   "name": "nsq-playground",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://mattwagl@github.com/mattwagl/nsq-playground.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattwagl/nsq-playground/issues"
+  "scripts": {
+    "start-nsq": "docker-compose up"
   },
-  "homepage": "https://github.com/mattwagl/nsq-playground#readme",
   "dependencies": {
     "docker-names": "1.0.0",
     "nsqjs": "0.7.12"
