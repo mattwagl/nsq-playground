@@ -4,19 +4,17 @@ services:
   nsqlookupd:
     image: nsqio/nsq
     container_name: nsqlookupd
-    restart: always  
+    restart: always
     ports:
       - "4160:4160"
       - "4161:4161"
-    command: "/nsqlookupd"  
+    command: "/nsqlookupd"
 
   nsqd:
     image: nsqio/nsq
     container_name: nsqd
-    restart: always  
+    restart: always
     ports:
       - "4150:4150"
       - "4151:4151"
-    command: "/nsqd --broadcast-address=172.16.254.7 --lookupd-tcp-address=172.16.254.7:4160"  
-
-
+    command: "/nsqd --broadcast-address=192.168.99.100 --lookupd-tcp-address=192.168.99.100:4160"  

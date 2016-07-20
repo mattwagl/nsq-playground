@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mattwagl/nsq-playground#readme",
   "dependencies": {
+    "docker-names": "1.0.0",
     "nsqjs": "0.7.12"
   }
 }

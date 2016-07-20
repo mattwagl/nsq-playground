@@ -1,24 +1,26 @@
-var nsq = require('nsqjs');
+const nsq = require('nsqjs'),
+      Writer = nsq.Writer;
 
-var w = new nsq.Writer('127.0.0.1', 4150);
+const writer = new Writer('192.168.99.100', 4150);
 
-w.connect();
+let messageId = 0;
 
-w.on('ready', function () {
-  w.publish('sample_topic', 'it really tied the room together');
+writer.connect();
 
-  w.publish('sample_topic', [
-    'Uh, excuse me. Mark it zero. Next frame.',
-    'Smokey, this is not \'Nam. This is bowling. There are rules.'
-  ]);
-
-  w.publish('sample_topic', 'Wu?', function (err) {
-    if (err) { return console.error(err.message); }
-    console.log('Message sent successfully');
-    w.close();
-  });
+writer.on('ready', () => {
+  setInterval(() => {
+    writer.publish('work-queue', `Do some work, slave! ${messageId}`,  err => {
+      if (err) { return console.error(err.message); }
+      console.log('Message sent successfully');
+    });
+    messageId++;
+  }, 1 * 10);
 });
 
-w.on('closed', function () {
+writer.on('closed', function () {
   console.log('Writer closed');
+});
+
+process.on('exit', () => {
+  writer.close();
 });
