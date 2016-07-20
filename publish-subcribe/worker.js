@@ -5,7 +5,7 @@ const Reader = nsq.Reader;
 
 const workerName = dockerNames.getRandomName();
 
-const reader = new Reader('work-queue', 'worker-channel', {
+const reader = new Reader('pubsub-queue', `worker-channel-${workerName}`, {
   lookupdHTTPAddresses: '192.168.99.100:4161'
 });
 

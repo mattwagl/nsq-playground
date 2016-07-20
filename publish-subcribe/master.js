@@ -9,7 +9,8 @@ writer.connect();
 
 writer.on('ready', () => {
   setInterval(() => {
-    writer.publish('work-queue', `Do some work, slave! ${messageId}`,  err => {
+    console.log(`Do some work, slave! ${messageId}`);
+    writer.publish('pubsub-queue', `Do some work, slave! ${messageId}`,  err => {
       if (err) { return console.error(err.message); }
       console.log('Message sent successfully');
     });
